@@ -14,6 +14,9 @@ class Video extends Component {
   }
   render() {
     const { videoId, trailerDetails } = this.props;
+    if(!videoId) {
+      return null;
+    }
     const opts = {
       height: '390',
       width: '640',

@@ -1,6 +1,7 @@
 import {connect} from 'react-redux'
 import { selectors } from '../../store';
 import Link from 'next/link'
+import LazyImg from './lazyImg';
 
 import styles from './styles.styl';
 
@@ -13,7 +14,8 @@ const Trailers = ({ trailers }) => {
             <Link href={`/?eventCode=${t.eventCode}`} key={t.eventCode}>
               <div className={styles["item-cont"]}>
                 <div className={styles["img-cont"]}>
-                  <img src={t.thubnail} />
+                  {/*<img src={t.thubnail} />*/}
+                  <LazyImg imgSrc={t.thubnail}/>
                 </div>
                 <div className={styles["title-cont"]}>
                   <span>{t.eventTitle}</span>

@@ -1,5 +1,6 @@
 import {connect} from 'react-redux'
 import { selectors } from '../../store';
+import Link from 'next/link'
 
 import styles from './styles.styl';
 
@@ -9,14 +10,16 @@ const Trailers = ({ trailers }) => {
       {
         trailers.map((t) => {
           return (
-            <div className={styles["item-cont"]} key={t.eventCode}>
-              <div className={styles["img-cont"]}>
-                <img src={t.thubnail} />
+            <Link href={`/?eventCode=${t.eventCode}`} key={t.eventCode}>
+              <div className={styles["item-cont"]}>
+                <div className={styles["img-cont"]}>
+                  <img src={t.thubnail} />
+                </div>
+                <div className={styles["title-cont"]}>
+                  <span>{t.eventTitle}</span>
+                </div>
               </div>
-              <div className={styles["title-cont"]}>
-                <span>{t.eventTitle}</span>
-              </div>
-            </div>
+            </Link>
           );
         })
       }
@@ -42,4 +45,4 @@ const mapStateToProps = (store) => {
 //   );
 // }
 
-export default connect(mapStateToProps)(Trailers)
+export default connect(mapStateToProps)(Trailers);

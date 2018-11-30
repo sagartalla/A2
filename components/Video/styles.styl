@@ -1,0 +1,29 @@
+.trailer-cont
+  display block
+  @media screen and (min-width: 992px) {
+    display grid
+    grid-template-columns 2fr 1fr
+    grid-column-gap 10px
+  }
+  .video-wrap
+    display block
+    text-align center
+    iframe
+      width 100%
+  .trailer-details
+    padding 10px
+    .event-name
+      font-size 1.7rem
+    .event-language
+      font-size 0.7rem
+      padding 10px 0
+    .event-genere
+      font-size 0.6rem
+      .eg-item
+        border 1px solid #fff
+        display inline-block
+        padding 5px 20px
+        border-radius 11px 11px 11px 11px
+        margin 0 5px
+        &:first-of-type
+          margin-left 0

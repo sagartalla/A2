@@ -44,6 +44,15 @@ const reducer = typeToReducer({
         selectedLanguage: action.payload
       }
     };
+  },
+  [actions.SET_EVENT_ID]: (state, action) => {
+    return {
+      ...state,
+      data: {
+        ...state.data,
+        eventCode: action.payload 
+      }
+    }
   }
 });
 

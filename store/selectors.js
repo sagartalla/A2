@@ -1,4 +1,5 @@
 import { compose, filter, map } from 'lodash/fp';
+import { find } from 'lodash';
 
 
 const getTrailerData = (store) => {
@@ -17,7 +18,7 @@ const getTrailerData = (store) => {
   return compose(map((td) => ({
     trailerURL: td.TrailerURL,
     eventTitle: td.EventTitle,
-    thubnail: "https://in.bmscdn.com/events/moviecard/ET00046165.jpg",
+    thubnail: `http://in.bmscdn.com/iedb/movies/images/website/poster/large/${td.EventImageCode}.jpg`,
     eventCode: td.EventCode
   })),
   filter((td) => {
@@ -32,4 +33,18 @@ const getLanguages = (store) => {
   return store.data.trailerData[0];
 }
 
-export { getTrailerData, getLanguages };
+const getVideoId = (store) => {
+  if(store.data.eventCode) {
+    const a = new URL(store.data.trailerData[1][store.data.eventCode].TrailerURL);
+    return a.searchParams.get('v')
+  }
+  return '';
+}
+
+const getTrailerDetails = (store) => {
+  if(store.data.eventCode) {
+    return store.data.trailerData[1][store.data.eventCode];
+  }
+}
+
+export { getTrailerData, getLanguages, getVideoId, getTrailerDetails };

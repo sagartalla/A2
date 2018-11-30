@@ -12,6 +12,7 @@
       width 100%
   .trailer-details
     padding 10px
+    background rgba(0,0,0,0.5)
     .event-name
       font-size 1.7rem
     .event-language
@@ -27,3 +28,22 @@
         margin 0 5px
         &:first-of-type
           margin-left 0
+    .event-date-cont
+      .inline-wrap-icons
+        display inline-block
+        margin 10px 20px 0 40px
+        position relative
+        &::before
+          width 25px
+          height 25px
+          background-size contain
+          display block
+          position absolute
+          left -33px
+        &.likes::before
+          content ''
+          background-image: url('/static/img/thumbsup.png')
+        &.dates::before
+          content ''
+          background-image: url('/static/img/calander.png')
+          -webkit-filter: invert(100%);

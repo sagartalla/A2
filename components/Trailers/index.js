@@ -18,6 +18,7 @@ const Trailers = ({ trailers }) => {
                 <div className={styles["title-cont"]}>
                   <span>{t.eventTitle}</span>
                 </div>
+                <div className={styles['date']}>{t.showDate.split(', ')[0]}</div>
               </div>
             </Link>
           );

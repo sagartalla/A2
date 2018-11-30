@@ -11,9 +11,10 @@ class Video extends Component {
       height: '390',
       width: '640',
       playerVars: { // https://developers.google.com/youtube/player_parameters
-        autoplay: 1
+        autoplay: 0
       }
     };
+    const [date, year] = trailerDetails.ShowDate.split(', ')
     return (
       <div className={styles['trailer-cont']}>
         <div className={styles['video-wrap']}>
@@ -32,6 +33,16 @@ class Video extends Component {
                 return <div className={styles['eg-item']}>{g}</div>
               })
             }</div>
+            <div className={styles['event-date-cont']}>
+              <div className={`${styles['inline-wrap-icons']} ${styles['likes']}`}>
+                <div>{trailerDetails.wtsPerc} %</div>
+                <div>{trailerDetails.csCount} Votes</div>
+              </div>
+              <div className={`${styles['inline-wrap-icons']} ${styles['dates']}`}>
+                <div>{date}</div>
+                <div>{year}</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -14,12 +14,14 @@ const getTrailerData = (store) => {
     }
     return false;
   });
+  const [date, year] = trailerDetails.ShowDate.split(', ')
  */
   return compose(map((td) => ({
     trailerURL: td.TrailerURL,
     eventTitle: td.EventTitle,
     thubnail: `http://in.bmscdn.com/iedb/movies/images/website/poster/large/${td.EventImageCode}.jpg`,
-    eventCode: td.EventCode
+    eventCode: td.EventCode,
+    showDate: td.ShowDate
   })),
   filter((td) => {
     if(store.data.selectedLanguage && store.data.selectedLanguage !== "0"){

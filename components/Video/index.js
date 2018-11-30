@@ -5,13 +5,20 @@ import YouTube from 'react-youtube';
 import styles from './styles.styl';
 
 class Video extends Component {
+  componentDidUpdate() {
+    try {
+      window.scrollTo(0, 0);
+    } catch(e) {
+      console.log(e);
+    }
+  }
   render() {
     const { videoId, trailerDetails } = this.props;
     const opts = {
       height: '390',
       width: '640',
       playerVars: { // https://developers.google.com/youtube/player_parameters
-        autoplay: 0
+        autoplay: 1
       }
     };
     const [date, year] = trailerDetails.ShowDate.split(', ')

@@ -22,8 +22,22 @@ class Index extends React.Component {
   }
 
   render () {
+    const { trailerDetails } = this.props;
+    let bg;
+    if(trailerDetails) {
+      bg = {
+        'background-image': `url('http://in.bmscdn.com/iedb/movies/images/website/poster/large/${trailerDetails.EventImageCode}.jpg')`
+      }
+    }
+
     return (
       <Fragment>
+        {
+          trailerDetails ?
+            <div className={styles['bg-img']} style={bg}></div>
+            :
+            null
+        }
         <Nav />
         <div className={styles['cont-wrap']}>
           <Video />
@@ -34,4 +48,10 @@ class Index extends React.Component {
   }
 }
 
-export default connect()(Index)
+const mapStateToProps = (store) => {
+  return ({
+    trailerDetails: selectors.getTrailerDetails(store),
+  })
+};
+
+export default connect(mapStateToProps)(Index)
